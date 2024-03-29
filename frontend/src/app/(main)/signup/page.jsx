@@ -1,6 +1,44 @@
+'use client';
 import React from 'react'
+import { useFormik } from 'formik';
 
 const Signup = () => {
+
+  const signupForm = useFormik({
+    initialValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      contact: '',
+      password: '',
+      cpassword: ''
+    },
+    onSubmit: (values) => {
+      console.log(values);
+
+      //sending request to backend
+
+      fetch('http://localhost:5000/user/add', {
+        method: 'POST',
+        body: JSON.stringify(values), //covert js to json
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then((response) => {
+          console.log(response.status);
+          if (response.status === 200) {
+            enqueueSnackbar("User Added Successfully", { variant: 'success' })
+          } else {
+            enqueueSnackbar("Somthing went wrong", { variant: 'error' })
+          }
+        }).catch((err) => {
+          console.log(err);
+          enqueueSnackbar("Somthing went wrong", { variant: 'error' })
+        });
+      validationSchema: signupValidationSchema
+    }
+  })
   return (
     <div><main className="w-full max-w-md mx-auto p-6">
     <div className="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700">
