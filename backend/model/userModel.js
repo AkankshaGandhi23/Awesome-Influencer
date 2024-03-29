@@ -1,13 +1,11 @@
-const {model, Schema} = require('../connection');
+const { model, Schema } = require('../connection');
 
 const mySchema = new Schema({
-    title :{ type : String, required : true},
-    user : String,
-    postedAt : Date,
-    description : String,
-    image : String,
-    likes : {type: Number, default : 0},
-    share : {type: Number, default : 0}
+    name: { type: String, required: true },
+    email: {type : String, unique : true, required : true},
+    password: String,
+    avatar: {type : String, default: ''},
+    createdAt: Date,
 });
 
-module.exports =model('contact', mySchema);
+module.exports = model('influencer', mySchema);

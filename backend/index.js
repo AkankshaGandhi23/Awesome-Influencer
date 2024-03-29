@@ -3,7 +3,9 @@ const express = require('express'); //import
 const cors = require('cors');
 const app = express();  //initialize
 
-const postRouter = require('./router/userRouter');
+const userRouter = require('./router/userRouter');
+const contactRouter = require('./router/contactRouter');    
+const brandRouter = require('./router/brandRouter');
 
 //middleware
 app.use(cors({
@@ -12,7 +14,9 @@ app.use(cors({
 
 //conver js to json
 app.use(express.json());
-app.use('/post', userRouter);
+app.use('/user', userRouter);
+app.use('/contact', contactRouter);
+app.use('/brand', brandRouter);
 
 const port = 5000;
 

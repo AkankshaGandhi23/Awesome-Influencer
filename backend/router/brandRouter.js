@@ -1,6 +1,6 @@
 const express = require ('express');
 const router = express.Router();
-const Model = require('../model/contactModel')
+const Model = require('../model/brandModel')
 
 router.post('/add',(req, res) => {
     console.log(req.body);
