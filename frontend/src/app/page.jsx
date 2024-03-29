@@ -73,7 +73,7 @@ const Home = () => {
           </a>
         </div>
         {/* End Buttons */}
-      </div>m-triple-m
+      </div>
          
         { /*second section*/}
       <>
