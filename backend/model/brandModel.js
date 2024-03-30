@@ -3,7 +3,7 @@ const {model, Schema} = require('../connection');
 const mySchema = new Schema({
     name :{ type : String, required : true},
     email : String,
-    logo : {type : String, default: ''},
+    logo : {type : String, default: 'logo-placeholder-image.png'},
     cover : {type : String, default: ''},
     type : String,
     createdAt : Date

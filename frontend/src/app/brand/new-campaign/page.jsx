@@ -1,19 +1,63 @@
 'use client';
 import { useFormik } from 'formik'
-import React from 'react'
+import React, { useState } from 'react'
+import toast from 'react-hot-toast';
 
 const NewCampaign = () => {
 
+    const [selFile, setSelFile] = useState('');
+
     const campaignForm = useFormik({
         initialValues: {
-
+            title: '',
+            type: '',
+            cover: '',
+            description: '',
+            incentive: 0,
+            lastDate: '',
+            // brand: ,
+            createdAt: new Date()
         },
-        onSubmit: values => {
+        onSubmit: (values, {resetForm}) => {
+            values.cover = selFile;
             console.log(values);
+            fetch('http://localhost:5000/campaign/add', {
+                method: 'POST',
+                body: JSON.stringify(values),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then((res) => {
+                    console.log(res);
+                    if (res.status === 200){
+                        toast.success('Campaign added successfully');
+                        resetForm();
+                    }
+                    else
+                        toast.error('Failed to add campaign');
+                }).catch((err) => {
+                    console.log(err);
+                    toast.error('Failed to add campaign');
+                });
         }
     });
 
-
+    const uploadFile = (e) => {
+        let file = e.target.files[0];
+        const fd = new FormData();
+        setSelFile(file.name);
+        fd.append('myfile', file);
+        fetch(`http://localhost:5000/util/uploadfile`, {
+          method: 'POST',
+          body: fd
+        }).then(res => {
+          if (res.status === 200) {
+            toast.success('Image uploaded successfully');
+          }
+        });
+    
+      }
 
 
     return (
@@ -21,136 +65,114 @@ const NewCampaign = () => {
             <main className="w-full flex-grow p-6">
                 <h1 className="w-full text-3xl text-black pb-6">New Campaign</h1>
                 <div className="flex flex-wrap">
-                    <div className="w-full lg:w-1/2 mt-6 pl-0 lg:pl-2">
-                        <p className="text-xl pb-6 flex items-center">
-                            <i className="fas fa-list mr-3" /> Checkout Form
-                        </p>
+                    <div className="w-full mx-auto lg:w-1/2 mt-6 pl-0 lg:pl-2">
+
                         <div className="leading-loose">
-                            <form className="p-10 bg-white rounded shadow-xl" onClick={campaignForm.handleSubmit}>
+                            <form className="p-10 bg-white rounded shadow-xl" onSubmit={campaignForm.handleSubmit}>
                                 <p className="text-lg text-gray-800 font-medium pb-4">
-                                    Customer information
+                                    Campaign information
                                 </p>
-                                <div className="">
-                                    <label className="block text-sm text-gray-600" htmlFor="cus_name">
-                                        Name
+                                <div className="mb-4">
+                                    <label className="block text-sm text-gray-600" htmlFor="title">
+                                        Title
                                     </label>
                                     <input
                                         className="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                                        id="cus_name"
+                                        id="title"
+                                        onChange={campaignForm.handleChange}
+                                        value={campaignForm.values.title}
                                         type="text"
                                         required=""
                                         placeholder="Your Name"
                                         aria-label="Name"
                                     />
                                 </div>
-                                <div className="mt-2">
-                                    <label
-                                        className="block text-sm text-gray-600"
-                                        htmlFor="cus_email"
-                                    >
-                                        Email
+
+                                <div className="mb-4">
+                                    <label className="block text-sm text-gray-600" htmlFor="type">
+                                        Type
                                     </label>
                                     <input
-                                        className="w-full px-5  py-4 text-gray-700 bg-gray-200 rounded"
-                                        id="cus_email"
-                                        name="cus_email"
+                                        className="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                                        id="type"
+                                        onChange={campaignForm.handleChange}
+                                        value={campaignForm.values.type}
                                         type="text"
                                         required=""
-                                        placeholder="Your Email"
-                                        aria-label="Email"
+                                        placeholder="Type"
+                                        aria-label="Type"
                                     />
+
                                 </div>
-                                <div className="mt-2">
-                                    <label
-                                        className=" block text-sm text-gray-600"
-                                        htmlFor="cus_email"
-                                    >
-                                        Address
+                                <div className="mb-4">
+                                    <label className="block text-sm text-gray-600" htmlFor="cover">
+                                        Cover
                                     </label>
                                     <input
-                                        className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                                        id="cus_email"
-                                        name="cus_email"
-                                        type="text"
+                                        className="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                                        type="file"
+                                        onChange={uploadFile}
                                         required=""
-                                        placeholder="Street"
-                                        aria-label="Email"
+                                        placeholder="Cover"
+                                        aria-label="Cover"
                                     />
                                 </div>
-                                <div className="mt-2">
-                                    <label
-                                        className="hidden text-sm block text-gray-600"
-                                        htmlFor="cus_email"
-                                    >
-                                        City
+                                <div className="mb-4">
+                                    <label className="block text-sm text-gray-600" htmlFor="description">
+                                        Description
+
+                                    </label>
+                                    <textarea
+                                        className="w-full px-5 py-2 text-gray-700 bg-gray-200 rounded"
+                                        id="description"
+                                        onChange={campaignForm.handleChange}
+                                        value={campaignForm.values.description}
+                                        type="text"
+                                        required=""
+                                        placeholder="Description"
+                                        aria-label="Description"
+                                    />
+                                </div>
+                                <div className="mb-4">
+                                    <label className="block text-sm text-gray-600" htmlFor="incentive">
+                                        Incentive
                                     </label>
                                     <input
-                                        className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                                        id="cus_email"
-                                        name="cus_email"
+                                        className="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                                        id="incentive"
+                                        onChange={campaignForm.handleChange}
+                                        value={campaignForm.values.incentive}
                                         type="text"
                                         required=""
-                                        placeholder="City"
-                                        aria-label="Email"
+                                        placeholder="Incentive"
+                                        aria-label="Incentive"
                                     />
                                 </div>
-                                <div className="inline-block mt-2 w-1/2 pr-1">
-                                    <label
-                                        className="hidden block text-sm text-gray-600"
-                                        htmlFor="cus_email"
-                                    >
-                                        Country
+
+                                <div className="mb-4">
+                                    <label className="block text-sm text-gray-600" htmlFor="lastDate">
+                                        Last Date
                                     </label>
                                     <input
-                                        className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                                        id="cus_email"
-                                        name="cus_email"
-                                        type="text"
+                                        className="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                                        id="lastDate"
+                                        onChange={campaignForm.handleChange}
+                                        value={campaignForm.values.lastDate}
+                                        type="date"
                                         required=""
-                                        placeholder="Country"
-                                        aria-label="Email"
+                                        placeholder="Last Date"
+                                        aria-label="Last Date"
                                     />
                                 </div>
-                                <div className="inline-block mt-2 -mx-1 pl-1 w-1/2">
-                                    <label
-                                        className="hidden block text-sm text-gray-600"
-                                        htmlFor="cus_email"
-                                    >
-                                        Zip
-                                    </label>
-                                    <input
-                                        className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                                        id="cus_email"
-                                        name="cus_email"
-                                        type="text"
-                                        required=""
-                                        placeholder="Zip"
-                                        aria-label="Email"
-                                    />
-                                </div>
-                                <p className="text-lg text-gray-800 font-medium py-4">
-                                    Payment information
-                                </p>
-                                <div className="">
-                                    <label className="block text-sm text-gray-600" htmlFor="cus_name">
-                                        Card
-                                    </label>
-                                    <input
-                                        className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                                        id="cus_name"
-                                        name="cus_name"
-                                        type="text"
-                                        required=""
-                                        placeholder="Card Number MM/YY CVC"
-                                        aria-label="Name"
-                                    />
-                                </div>
+
+
+
                                 <div className="mt-6">
                                     <button
                                         className="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded"
                                         type="submit"
                                     >
-                                        $3.00
+                                        Add Campaign
                                     </button>
                                 </div>
                             </form>

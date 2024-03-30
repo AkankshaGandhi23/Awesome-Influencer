@@ -2,10 +2,13 @@ const express = require('express'); //import
 
 const cors = require('cors');
 const app = express();  //initialize
+const port = 5000;
 
 const userRouter = require('./router/userRouter');
 const contactRouter = require('./router/contactRouter');    
 const brandRouter = require('./router/brandRouter');
+const campaignRouter = require('./router/campaignRouter');
+const utilRouter = require('./router/util');
 
 //middleware
 app.use(cors({
@@ -17,8 +20,10 @@ app.use(express.json());
 app.use('/user', userRouter);
 app.use('/contact', contactRouter);
 app.use('/brand', brandRouter);
+app.use('/campaign', campaignRouter);
+app.use('/util', utilRouter);
 
-const port = 5000;
+app.use(express.static('./static/uploads'));
 
 //start express server
 
