@@ -19,8 +19,25 @@ const Login = () => {
     },
     onSubmit : (values) => {
       console.log(values);
-      //send data to backend
-    },
+     }
+    fetch('http://localhost:5000/user/add', {
+        method: 'POST',
+        body: JSON.stringify(values), //covert js to json
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then((response) => {
+          console.log(response.status);
+          if (response.status === 200) {
+            enqueueSnackbar("User Added Successfully", { variant: 'success' })
+          } else {
+            enqueueSnackbar("Somthing went wrong", { variant: 'error' })
+          }
+        }).catch((err) => {
+          console.log(err);
+          enqueueSnackbar("Somthing went wrong", { variant: 'error' })
+        });
     validationSchema : loginValidationSchema
   })
 
