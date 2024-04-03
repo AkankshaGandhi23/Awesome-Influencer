@@ -1,22 +1,21 @@
+import Link from 'next/link';
 import React from 'react'
 
 const Navbar = () => {
   return (
-    <div><>
-    {/* ========== HEADER ========== */}
     <header className="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white text-sm py-3 sm:py-0 dark:bg-slate-900">
       <nav
         className="relative max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8"
         aria-label="Global"
       >
         <div className="flex items-center justify-between">
-          <a
+          <Link
             className="flex-none text-xl font-semibold dark:text-white"
-            href="#"
+            href="/"
             aria-label="Brand"
           >
-            Brand
-          </a>
+            Awesome Influencers
+          </Link>
           <div className="sm:hidden">
             <button
               type="button"
@@ -188,76 +187,6 @@ const Navbar = () => {
         </div>
       </nav>
     </header>
-    {/* ========== END HEADER ========== */}
-    {/* Nav */}
-    <nav className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="relative flex flex-row justify-between items-center gap-x-8 border-t py-4 sm:py-0 dark:border-slate-700">
-        <div className="flex items-center w-full sm:w-[auto]">
-          <span className="font-semibold whitespace-nowrap text-gray-800 border-e border-e-white/[.7] sm:border-transparent pe-4 me-4 sm:py-3.5 dark:text-white">
-            Awesome Influencer
-          </span>
-          <div className="w-full sm:hidden">
-            <button
-              type="button"
-              className="hs-collapse-toggle group w-full inline-flex justify-between items-center gap-2 rounded-lg font-medium text-gray-600 border border-gray-200 align-middle py-1.5 px-2 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-white/[.5] transition"
-              data-hs-collapse="#secondary-nav-toggle"
-              aria-controls="secondary-nav-toggle"
-              aria-label="Toggle navigation"
-            >
-              Overview
-              <svg
-                className="hs-dropdown-open:rotate-180 flex-shrink-0 size-4 transition group-hover:text-gray-800"
-                xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-            </button>
-          </div>
-        </div>
-        <div
-          id="secondary-nav-toggle"
-          className="hs-collapse hidden overflow-hidden transition-all duration-300 absolute top-16 end-0 w-full rounded-lg bg-white sm:block sm:static sm:top-0 sm:w-full sm:max-h-full sm:bg-transparent sm:overflow-visible"
-        >
-          <div className="flex flex-col py-2 sm:flex-row sm:justify-end sm:gap-y-0 sm:gap-x-6 sm:py-0">
-            <a
-              className="text-sm font-semibold text-blue-600 py-2 sm:py-3.5 dark:text-white dark:hover:text-white"
-              href="#"
-            >
-              Overview
-            </a>
-            <a
-              className="text-sm font-medium text-gray-800 hover:text-blue-600 sm:border-b-2 border-b-transparent py-2 sm:py-3.5 dark:text-gray-400 dark:hover:text-white"
-              href="#"
-            >
-              Features
-            </a>
-            <a
-              className="text-sm font-medium text-gray-800 hover:text-blue-600 sm:border-b-2 border-b-transparent py-2 sm:py-3.5 dark:text-gray-400 dark:hover:text-white"
-              href="#"
-            >
-              Platforms
-            </a>
-            <a
-              className="text-sm font-medium text-gray-800 hover:text-blue-600 sm:border-b-2 border-b-transparent py-2 sm:py-3.5 dark:text-gray-400 dark:hover:text-white"
-              href="#"
-            >
-              Pricing
-            </a>
-          </div>
-        </div>
-      </div>
-    </nav>
-    {/* End Nav */}
-  </>
-  </div>
   )
 }
 
