@@ -83,14 +83,14 @@ const NewCampaign = () => {
                                         value={campaignForm.values.title}
                                         type="text"
                                         required=""
-                                        placeholder="Your Name"
+                                        placeholder="Brand Name"
                                         aria-label="Name"
                                     />
                                 </div>
 
                                 <div className="mb-4">
                                     <label className="block text-sm text-gray-600" htmlFor="type">
-                                        Type
+                                        Product
                                     </label>
                                     <input
                                         className="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
@@ -164,6 +164,23 @@ const NewCampaign = () => {
                                         aria-label="Last Date"
                                     />
                                 </div>
+
+                                <div className="mb-4">
+                                    <label className="block text-sm text-gray-600" htmlFor="title">
+                                        Minimum Followers
+                                    </label>
+                                    <input
+                                        className="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                                        id="title"
+                                        onChange={campaignForm.handleChange}
+                                        value={campaignForm.values.title}
+                                        type="text"
+                                        required=""
+                                        placeholder="Followers count"
+                                        aria-label="Name"
+                                    />
+                                </div>
+
 
 
 
