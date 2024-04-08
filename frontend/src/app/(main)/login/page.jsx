@@ -19,16 +19,38 @@ const Login = () => {
     },
     onSubmit: (values) => {
       console.log(values);
-    }
-  });
 
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/authenticate`)          //backtik(``)
+      {
+        method:'POST',
+        body:JSON.stringfy(values),
+        headers: {
+          'Content-Type' :'application/json'
+        
+        }
+      }
+    
+  )
+  .then((response) =>
+{
+  console.log(response.status);
+  if(response.status ===200){
+    response.json()
+    .then(data =>{
+      console.log(data);
+    })
+  }
+}).catch((err) => {
+  console.log(err);
+})
+  
   return (
     <div><main className="w-full max-w-md mx-auto p-6 ">
       <div className="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700 ">
         <div className="p-4 sm:p-7">
           <div className="text-center">
             <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">
-              Sign in
+              Login
             </h1>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
               Don't have an account yet?
@@ -89,7 +111,7 @@ const Login = () => {
                     <input
                       type="email"
                       id="email"
-                      name="email"
+                      onChange={Login}
                       className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                       required=""
                       aria-describedby="email-error"
@@ -123,7 +145,7 @@ const Login = () => {
                     </label>
                     <a
                       className="text-sm text-blue-600 decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                      href="../examples/html/recover-account.html"
+                      href="../resetPassword"
                     >
                       Forgot password?
                     </a>

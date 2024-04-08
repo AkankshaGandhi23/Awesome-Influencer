@@ -5,6 +5,7 @@ const mySchema = new Schema({
     email: {type : String, unique : true, required : true},
     password: String,
     avatar: {type : String, default: ''},
+    role:{type : String,default:}
     createdAt: Date,
 });
 
