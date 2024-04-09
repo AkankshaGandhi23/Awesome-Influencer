@@ -26,7 +26,6 @@ router.get('/getall',(req , res) => {
 
 router.post("/authenticate", (req, res) => {
 
-
     model.findOne(req.body)
         .then((result) => {
 
