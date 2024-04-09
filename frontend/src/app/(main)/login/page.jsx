@@ -2,6 +2,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import Link from 'next/link';
 
 const loginValidationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid Email').required('Email is required'
@@ -48,16 +49,16 @@ const Login = () => {
         <div className="p-4 sm:p-7">
           <div className="text-center">
             <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">
-              Login
+              Influencer Login
             </h1>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
               Don't have an account yet?
-              <a
+              <Link
                 className="text-blue-600 decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                href="../examples/html/signup.html"
+                href="/signup"
               >
                 Sign up here
-              </a>
+              </Link>
             </p>
           </div>
           <div className="mt-5">

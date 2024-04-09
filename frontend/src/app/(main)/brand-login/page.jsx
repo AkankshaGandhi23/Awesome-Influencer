@@ -2,6 +2,10 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import Link from 'next/link';
+import useBrandContext from '@/context/BrandContext';
+import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 const loginValidationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid Email').required('Email is required'
@@ -11,6 +15,8 @@ const loginValidationSchema = Yup.object().shape({
 
 
 const Login = () => {
+  const {setBrandLoggedIn} = useBrandContext();
+  const router = useRouter();
 
   const loginForm = useFormik({
     initialValues: {
@@ -20,7 +26,7 @@ const Login = () => {
     onSubmit: (values) => {
       console.log(values);
 
-      fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/authenticate`,          //backtik(``)
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/brand/authenticate`,          //backtik(``)
         {
           method: 'POST',
           body: JSON.stringfy(values),
@@ -32,9 +38,13 @@ const Login = () => {
         .then((response) => {
           console.log(response.status);
           if (response.status === 200) {
+            toast.success('Loggedin Successfully');
             response.json()
               .then(data => {
                 console.log(data);
+                sessionStorage.setItem('brand', data.token);
+                setBrandLoggedIn(true);
+                router.push('/brand/dashboard');
               })
           }
         }).catch((err) => {
@@ -43,21 +53,22 @@ const Login = () => {
     }
   })
   return (
-    <div><main className="w-full max-w-md mx-auto p-6 ">
+    <div>
+      <main className="w-full max-w-md mx-auto p-6 ">
       <div className="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700 ">
         <div className="p-4 sm:p-7">
           <div className="text-center">
             <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">
-              Login
+              Brand Login
             </h1>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
               Don't have an account yet?
-              <a
+              <Link
                 className="text-blue-600 decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                href="../examples/html/signup.html"
+                href="/brand-signup"
               >
                 Sign up here
-              </a>
+              </Link>
             </p>
           </div>
           <div className="mt-5">
