@@ -1,6 +1,8 @@
 const express = require ('express');
 const router = express.Router();
 const Model = require('../model/brandModel')
+require('dotenv').config();
+const jwt = require('jsonwebtoken');
 
 router.post('/add',(req, res) => {
     console.log(req.body);
@@ -24,7 +26,7 @@ router.get('/getall',(req , res) => {
 
 router.post("/authenticate", (req, res) => {
 
-    model.findOne(req.body)
+    Model.findOne(req.body)
         .then((result) => {
 
             if (result) {

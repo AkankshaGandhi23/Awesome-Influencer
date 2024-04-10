@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-
+import toast from 'react-hot-toast';
 
 const signupValidationSchema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
@@ -30,7 +30,7 @@ const Signup = () => {
     },
     onSubmit: (values) => {
       console.log(values);
-      return;
+      // return;
       //sending request to backend
 
       fetch('http://localhost:5000/brand/add', {
@@ -43,13 +43,13 @@ const Signup = () => {
         .then((response) => {
           console.log(response.status);
           if (response.status === 200) {
-            enqueueSnackbar("User Added Successfully", { variant: 'success' })
+            toast.success("User Added Successfully")
           } else {
-            enqueueSnackbar("Somthing went wrong", { variant: 'error' })
+            toast.error("Somthing went wrong")
           }
         }).catch((err) => {
           console.log(err);
-          enqueueSnackbar("Somthing went wrong", { variant: 'error' })
+          toast.error("Somthing went wrong")
         });
     },
     validationSchema: signupValidationSchema
@@ -145,7 +145,7 @@ const Signup = () => {
                   </div>
                   {
                     signupForm.touched.name && (
-                      <p className="hidden text-xs text-red-600 mt-2" id="name-error">
+                      <p className="text-xs text-red-600 mt-2" id="name-error">
                         {signupForm.errors.name}
                       </p>
                     )
@@ -201,9 +201,9 @@ const Signup = () => {
                     <input
                       type="password"
                       id="password"
-                      name="password"
+                      value={signupForm.values.password}
+                      onChange={signupForm.handleChange}
                       className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                      required=""
                       aria-describedby="password-error"
                     />
                     <div className="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
@@ -219,12 +219,13 @@ const Signup = () => {
                       </svg>
                     </div>
                   </div>
-                  <p
-                    className="hidden text-xs text-red-600 mt-2"
-                    id="password-error"
-                  >
-                    8+ characters required
-                  </p>
+                  {
+                    signupForm.touched.password && (
+                      <p className="text-xs text-red-600 mt-2" id="name-error">
+                        {signupForm.errors.password}
+                      </p>
+                    )
+                  }
                 </div>
                 {/* End Form Group */}
                 {/* Form Group */}
@@ -238,8 +239,9 @@ const Signup = () => {
                   <div className="relative">
                     <input
                       type="password"
-                      id="confirmpassword"
-                      name="confirm-password"
+                      id="confirmPassword"
+                      onChange={signupForm.handleChange}
+                      value={signupForm.values.confirmPassword}
                       className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                       required=""
                       aria-describedby="confirm-password-error"
@@ -257,12 +259,13 @@ const Signup = () => {
                       </svg>
                     </div>
                   </div>
-                  <p
-                    className="hidden text-xs text-red-600 mt-2"
-                    id="confirm-password-error"
-                  >
-                    Password does not match the password
-                  </p>
+                  {
+                    signupForm.touched.confirmPassword && (
+                      <p className="text-xs text-red-600 mt-2" id="name-error">
+                        {signupForm.errors.confirmPassword}
+                      </p>
+                    )
+                  }
                 </div>
                 {/* End Form Group */}
                 {/* Checkbox */}
