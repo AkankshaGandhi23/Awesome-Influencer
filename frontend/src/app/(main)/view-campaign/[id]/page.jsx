@@ -1,6 +1,31 @@
-import React from 'react'
+import { useParams } from 'next/navigation';
+import React, { useEffect, useState } from 'react'
 
 const ViewCampaign = () => {
+
+  const { id } = useParams();
+  const [influencerDetails, setInfluencerDetails] = useState(null);
+
+  const fetchCampaign = async () => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/campaign/getbyid/${id}`)
+    .then((response) => {
+      console.log(response.status);
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+      setInfluencerDetails(data);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+  }
+
+  useEffect(() => {
+    fetchCampaign();
+  }, [])
+  
+
   return (
     <div>
         <div className="max-w-sm w-full lg:max-w-full my-10 grid grid-cols-12">

@@ -42,7 +42,7 @@ const Login = () => {
             response.json()
               .then(data => {
                 console.log(data);
-                sessionStorage.setItem('brand', data.token);
+                sessionStorage.setItem('brand', JSON.stringify(data));
                 setBrandLoggedIn(true);
                 router.push('/brand/dashboard');
               })
