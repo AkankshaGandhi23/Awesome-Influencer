@@ -14,7 +14,7 @@ const Home = () => {
             <div className="flex justify-center">
               <a
                 className="group inline-block bg-white/[.05] hover:bg-white/[.1] border border-white/[.05] p-1 ps-4 rounded-full shadow-md"
-                href="../figma.html"
+                href="../signup"
               >
                 <p className="me-2 inline-block text-white text-sm">
                   Welcome To Influencer's World
