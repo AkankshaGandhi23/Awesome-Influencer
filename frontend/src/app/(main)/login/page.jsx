@@ -3,6 +3,9 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Link from 'next/link';
+import toast from 'react-hot-toast';
+import useAppContext from '@/context/AppContext';
+import { useRouter } from 'next/navigation';
 
 const loginValidationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid Email').required('Email is required'
@@ -12,6 +15,9 @@ const loginValidationSchema = Yup.object().shape({
 
 
 const Login = () => {
+
+  const { setCurrentUser, setLoggedIn } = useAppContext();
+  const router = useRouter();
 
   const loginForm = useFormik({
     initialValues: {
@@ -24,7 +30,7 @@ const Login = () => {
       fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/authenticate`,          //backtik(``)
         {
           method: 'POST',
-          body: JSON.stringfy(values),
+          body: JSON.stringify(values),
           headers: {
             'Content-Type': 'application/json'
           }
@@ -33,12 +39,22 @@ const Login = () => {
         .then((response) => {
           console.log(response.status);
           if (response.status === 200) {
+            toast.success('Login Successfull');
             response.json()
               .then(data => {
                 console.log(data);
+                setCurrentUser(data);
+                setLoggedIn(true);
+                sessionStorage.setItem('user', JSON.stringify(data));
+                router.push('/');
               })
+          }else if(response.status === 401){
+            toast.error('Login Failed');
+          }else{
+            toast.error('some error occured');
           }
         }).catch((err) => {
+          toast.error('Login Failed');
           console.log(err);
         })
     }
@@ -110,9 +126,9 @@ const Login = () => {
                     <input
                       type="email"
                       id="email"
-                      onChange={Login}
+                      onChange={loginForm.handleChange}
+                      value={loginForm.values.email}
                       className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                      required=""
                       aria-describedby="email-error"
                     />
                     <div className="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
@@ -153,9 +169,9 @@ const Login = () => {
                     <input
                       type="password"
                       id="password"
-                      name="password"
+                      onChange={loginForm.handleChange}
+                      value={loginForm.values.password}
                       className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-                      required=""
                       aria-describedby="password-error"
                     />
                     <div className="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">

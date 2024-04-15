@@ -1,4 +1,5 @@
 'use client';
+import useBrandContext from '@/context/BrandContext';
 import { useFormik } from 'formik'
 import React, { useState } from 'react'
 import toast from 'react-hot-toast';
@@ -6,6 +7,7 @@ import toast from 'react-hot-toast';
 const NewCampaign = () => {
 
     const [selFile, setSelFile] = useState('');
+    const { currentBrand } = useBrandContext();
 
     const campaignForm = useFormik({
         initialValues: {
@@ -25,7 +27,8 @@ const NewCampaign = () => {
                 method: 'POST',
                 body: JSON.stringify(values),
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'x-auth-token': currentBrand.token
                 }
             })
                 .then((res) => {
@@ -159,7 +162,6 @@ const NewCampaign = () => {
                                         onChange={campaignForm.handleChange}
                                         value={campaignForm.values.lastDate}
                                         type="date"
-                                        required=""
                                         placeholder="Last Date"
                                         aria-label="Last Date"
                                     />

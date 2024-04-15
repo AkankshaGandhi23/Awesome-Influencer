@@ -36,6 +36,7 @@ router.post("/authenticate", (req, res) => {
         .then((result) => {
 
             if (result) {
+                const { _id, name, email, logo, cover, type, role } = result;
 
                 const payload = { _id: result._id, email: result.email, role: result.role };
 
@@ -49,7 +50,7 @@ router.post("/authenticate", (req, res) => {
                             console.log(err);
                             res.status(500).json(err);
                         }
-                        else res.status(200).json({ token: token });
+                        else res.status(200).json({ token, name, logo, cover});
                     }
                 )
             }
