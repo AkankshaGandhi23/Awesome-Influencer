@@ -13,7 +13,7 @@ const Home = () => {
             <div className="flex justify-center">
               <a
                 className="group inline-block bg-white/[.05] hover:bg-white/[.1] border border-white/[.05] p-1 ps-4 rounded-full shadow-md"
-                href="../figma.html"
+                href="../signup"
               >
                 <p className="me-2 inline-block text-white text-sm">
                   Welcome To Influencer's World
@@ -54,7 +54,7 @@ const Home = () => {
             <div className="text-center">
               <a
                 className="inline-flex justify-center items-center gap-x-3 text-center bg-gradient-to-tl from-blue-600 to-violet-600 shadow-lg shadow-transparent hover:shadow-blue-700/50 border border-transparent text-white text-sm font-medium rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white py-3 px-6 dark:focus:ring-offset-gray-800"
-                href="#"
+                href="/signup"
               >
                 Get started
                 <svg
