@@ -52,7 +52,11 @@ const ViewCampaign = () => {
   }
 
   const checkEnrolled = () => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/enroll/check-enrolled/${id}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/enroll/check-enrolled/${id}`, {
+      headers: {
+        'x-auth-token': currentUser.token
+      }
+    })
       .then((response) => {
         console.log(response.status);
         return response.json();
@@ -61,7 +65,7 @@ const ViewCampaign = () => {
         console.log(data);
         if (data === null) {
           enroll();
-        }else{
+        } else {
           toast.error('You are already enrolled in this campaign');
         }
       })

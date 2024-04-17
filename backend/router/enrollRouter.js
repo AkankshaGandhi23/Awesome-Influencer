@@ -18,7 +18,7 @@ router.post('/add', verifyToken, (req, res) => {
 
 })
 router.get('/getall', (req, res) => {
-    Model.find()
+    Model.find().populate('campaign').populate('influencer')
         .then((result) => {
             res.status(200).json(result);
         }).catch((err) => {
@@ -28,7 +28,7 @@ router.get('/getall', (req, res) => {
 });
 
 router.get('/getbyid/:id', (req, res) => {
-    Model.findById(req.params.id)
+    Model.findById(req.params.id).populate('campaign').populate('influencer')
         .then((result) => {
             res.status(200).json(result);
         }).catch((err) => {
@@ -37,7 +37,7 @@ router.get('/getbyid/:id', (req, res) => {
         });
 });
 
-router.get('/check-enrolled/:id', (req, res) => {
+router.get('/check-enrolled/:id', verifyToken, (req, res) => {
     Model.findOne({influencer : req.user._id, campaign : req.params.id})
         .then((result) => {
             res.status(200).json(result);
@@ -46,6 +46,29 @@ router.get('/check-enrolled/:id', (req, res) => {
             res.status(500).json(err);
         });
 });
+
+router.get('/getbyinfluencer', verifyToken, (req, res) => {
+    Model.find({influencer : req.user._id}).populate('campaign')
+        .then((result) => {
+            res.status(200).json(result);
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
+
+// get by brand
+router.get('/getbybrand', verifyToken, (req, res) => {
+    Model.find().populate('campaign').populate('influencer')
+        .then((result) => {
+            res.status(200).json(result);
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
 
 
 module.exports = router;

@@ -9,7 +9,7 @@ const contactRouter = require('./router/contactRouter');
 const brandRouter = require('./router/brandRouter');
 const campaignRouter = require('./router/campaignRouter');
 const utilRouter = require('./router/util');
-const enrollModel = require('./model/enrollModel');
+const enrollRouter = require('./router/enrollRouter');
 
 //middleware
 app.use(cors({
@@ -23,7 +23,7 @@ app.use('/contact', contactRouter);
 app.use('/brand', brandRouter);
 app.use('/campaign', campaignRouter);
 app.use('/util', utilRouter);
-app.use('/enroll', enrollModel);
+app.use('/enroll', enrollRouter);
 
 app.use(express.static('./static/uploads'));
 
