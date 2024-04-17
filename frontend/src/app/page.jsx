@@ -269,7 +269,7 @@ const Home = () => {
             <div className="relative ms-4">
               <img
                 className="w-full rounded-md"
-                src="https://i.pinimg.com/originals/24/43/c8/2443c8d63e133439937eb7166c9651fc.gif"
+                src="https://lh6.googleusercontent.com/proxy/QgEuMrsUyJc_QixL3Os1HAuvCg3yt6sffJv5YRusxnU2meWKFajcHGs1vepRvKuXsgi2Lx-nMXG4qttMzqEMD3Ak0_yswfzvjXSw5Dceg71TJ88CH2tiIcWYsne7PFDxHOfozwexCzUEcu01KqQ0xt816fBgqcFCsklX1DffvmHoKR8WRsnxSP6NkvDKqXgp-9AJHCmhzFwf=w1200-h630-p-k-no-nu"
                 alt="Image Description"
               />
               <div className="absolute inset-0 -z-[1] bg-gradient-to-tr from-gray-200 via-white/0 to-white/0 size-full rounded-md mt-4 -mb-4 me-4 -ms-4 lg:mt-6 lg:-mb-6 lg:me-6 lg:-ms-6 dark:from-slate-800 dark:via-slate-900/0 dark:to-slate-900/0" />
@@ -320,7 +320,7 @@ const Home = () => {
       
 <img
         className="w-50 object-cover rounded-xl"
-        src="https://wallpaperaccess.com/full/3000220.jpg"
+        src="https://www.reachx.de/uploads/titelbild-zukunft-influencer-marketing.jpg"
         alt="Image Description"
       />
 
