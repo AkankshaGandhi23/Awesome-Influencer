@@ -2,6 +2,7 @@
 import useAppContext from '@/context/AppContext';
 import React, { useEffect, useState } from 'react'
 import Sidebar from './Sidebar';
+import ManageProof from '../ManageProof';
 
 const ManageEnrollment = () => {
 
@@ -59,6 +60,9 @@ const ManageEnrollment = () => {
             <Sidebar items={enrollList} setSelEnrollment={setSelEnrollment} selEnrollment={selEnrollment} />
             <div className='p-10'>
                 {displayEnrollment()}
+                {
+                    selEnrollment!==null && <ManageProof campaignId={selEnrollment.campaign._id} />
+                }
             </div>
         </div>
     )
