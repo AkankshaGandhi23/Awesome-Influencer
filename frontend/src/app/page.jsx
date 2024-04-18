@@ -370,8 +370,7 @@ const Home = () => {
                 Creative minds
               </h3>
               <p className="mt-1 text-gray-600 dark:text-gray-400">
-                We choose our teams carefully. Our people are the secret to
-                great work.
+              A creative mind isn't just about trends, it's about pushing boundaries and sparking inspiration. Join me as we explore new ideas and unlock the power of imagination!
               </p>
             </div>
           </div>
@@ -398,8 +397,7 @@ const Home = () => {
                 Brand Partnership Showcase
               </h3>
               <p className="mt-1 text-gray-600 dark:text-gray-400">
-                From boarding passes to movie tickets, there's pretty much
-                nothing you can't store with Preline.
+              Dive in! Explore my latest collabs with inspiring brands I truly love.
               </p>
             </div>
           </div>
@@ -426,8 +424,7 @@ const Home = () => {
                 Profile Customization 
               </h3>
               <p className="mt-1 text-gray-600 dark:text-gray-400">
-                Our documentation and extensive Client libraries contain
-                everything a business needs to build a custom integration.
+              Make your space your own! Customize your profile to reflect your unique style and interests.
               </p>
             </div>
           </div>
@@ -456,8 +453,7 @@ const Home = () => {
                 Content Creation Tools
               </h3>
               <p className="mt-1 text-gray-600 dark:text-gray-400">
-                We actively pursue the right balance between functionality and
-                aesthetics, creating delightful experiences.
+              Unleash your inner influencer! Discover the best tools for editing, filming, and creating killer content.
               </p>
             </div>
           </div>
@@ -523,8 +519,7 @@ const Home = () => {
                     Campaign Launch 
                   </span>
                   <span className="block mt-1 text-gray-800 dark:hs-tab-active:text-gray-200 dark:text-neutral-200">
-                    Use Preline thoroughly thought and automated libraries to
-                    manage your businesses.
+                  Calling all collaborators! My next brand campaign is here. Let's create something amazing together.
                   </span>
                 </span>
               </span>
@@ -558,8 +553,7 @@ const Home = () => {
                     Campaign Management
                   </span>
                   <span className="block mt-1 text-gray-800 dark:hs-tab-active:text-gray-200 dark:text-neutral-200">
-                    Quickly Preline sample components, copy-paste codes, and
-                    start right off.
+                  Level up your brand! We craft & manage impactful influencer campaigns that drive results. Partner with us!
                   </span>
                 </span>
               </span>
@@ -596,8 +590,7 @@ const Home = () => {
                   Smart dashboards
                   </span>
                   <span className="block mt-1 text-gray-800 dark:hs-tab-active:text-gray-200 dark:text-neutral-200">
-                    Reduce time and effort on building modern look design with
-                    Preline only.
+                  Level up your brand game! My dashboard unlocks insights to connect with your audience and amplify results.
                   </span>
                 </span>
               </span>
@@ -760,7 +753,7 @@ const Home = () => {
             href="#"
             aria-label="Brand"
           >
-            Awesome Influencer
+            Awesome Influencers
           </a>
         </div>
         {/* End Col */}
@@ -780,7 +773,7 @@ const Home = () => {
                 className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 dark:text-neutral-400 dark:hover:text-neutral-200"
                 href="#"
               >
-                Changelog
+                Influencer Serach Tool
               </a>
             </p>
             <p>
@@ -788,7 +781,7 @@ const Home = () => {
                 className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 dark:text-neutral-400 dark:hover:text-neutral-200"
                 href="#"
               >
-                Docs
+                Contact
               </a>
             </p>
           </div>
@@ -800,7 +793,7 @@ const Home = () => {
             <p>
               <a
                 className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 dark:text-neutral-400 dark:hover:text-neutral-200"
-                href="#"
+                href="/about"
               >
                 About us
               </a>
@@ -855,11 +848,11 @@ const Home = () => {
                 className="w-full sm:w-auto whitespace-nowrap p-3 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
                 href="#"
               >
-                Subscribe
+                Join Us
               </a>
             </div>
             <p className="mt-3 text-sm text-gray-400">
-              New UI kits or big discounts. Never spam.
+             
             </p>
           </form>
         </div>
@@ -869,7 +862,7 @@ const Home = () => {
       <div className="mt-5 sm:mt-12 grid gap-y-2 sm:gap-y-0 sm:flex sm:justify-between sm:items-center">
         <div className="flex justify-between items-center">
           <p className="text-sm text-gray-400 dark:text-neutral-400">
-            © 2022 Preline. All rights reserved.
+           
           </p>
         </div>
         {/* End Col */}
@@ -968,4 +961,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home;
