@@ -92,6 +92,7 @@ const ViewCampaign = () => {
             d="M-164 13L-104 39.7C-44 66 76 120 196 141C316 162 436 152 556 119.7C676 88 796 34 916 13C1036 -8 1156 2 1216 7.7L1276 13V162.5H1216C1156 162.5 1036 162.5 916 162.5C796 162.5 676 162.5 556 162.5C436 162.5 316 162.5 196 162.5C76 162.5 -44 162.5 -104 162.5H-164V13Z"
           />
         </svg>
+
         <div className="relative px-4 py-16 mx-auto overflow-hidden sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
           <div className="flex flex-col items-center justify-between xl:flex-row">
             {/* <div className="w-full max-w-xl mb-12 xl:mb-0 xl:pr-16 xl:w-7/12">
@@ -119,10 +120,57 @@ const ViewCampaign = () => {
                 </svg>
               </a>
             </div> */}
-            <div className="mt-64 w-full xl:px-8">
+            <div className="mt-5 w-full xl:px-8">
               <div className="bg-white rounded shadow-2xl p-7 sm:p-10">
                 <h3 className='text-3xl'>{campaignDetails.title}</h3>
-                <button onClick={checkEnrolled} className="bg-blue-500 text-white px-4 py-2 rounded mt-4">Enroll</button>
+                <div className='flex p-16'>
+                  <div>
+                    <img
+                      className="max-w-sm h-60"
+                      src="https://i.pinimg.com/originals/25/6c/19/256c19006b945701f7e2d080fde7b12d.jpg"
+                    />
+                  </div>
+                  <div className="max-w-sm w-full lg:max-w-full lg:flex">
+
+                    <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                      <div className="mb-8">
+                        <p className="text-sm text-gray-600 flex items-center">
+                          <svg
+                            className="fill-current text-gray-500 w-3 h-3 mr-2"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
+                          </svg>
+                          Nike
+                        </p>
+                        <p>
+                          Product:shoes
+                        </p>
+                        <div className="text-gray-900 font-bold text-xl mb-2">
+                          "Step Up Your Game:Nike Shoes - Where Innovation Meets Style"
+                        </div>
+                        <p className="text-gray-700 text-base">
+                          Nike Shoes: Cutting-edge design,premium materials,<br></br>
+                          and superior performance for athletes and fashion enthusiasts alike.
+                        </p>
+                      </div>
+                      <div className="flex items-center">
+                        <img
+                          className="w-10 h-10 rounded-full mr-4"
+                          src="https://i.pinimg.com/originals/25/6c/19/256c19006b945701f7e2d080fde7b12d.jpg"
+                          alt="Avatar of Jonathan Reinink"
+                        />
+                        <div className="text-sm">
+                          <p className="text-gray-900 leading-none font-bold text-lg">Incentive:₹5000</p>
+                          <p className="text-gray-600 font-bold text-lg">Last Date: 20 April 2024 </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <button onClick={checkEnrolled} className="bg-blue-500 mx-auto block text-white px-4 py-2 rounded mt-4">Enroll</button>
               </div>
             </div>
           </div>
@@ -132,49 +180,14 @@ const ViewCampaign = () => {
   }
 
   return (
-    <div>
-      {displayDetails()}
+    <>
 
-      <div className="max-w-sm w-full lg:max-w-full lg:flex">
-  <div
-    className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-    style={{ backgroundImage: 'url("/img/card-left.jpg")' }}
-    title="Woman holding a mug"
-  ></div>
-  <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-    <div className="mb-8">
-      <p className="text-sm text-gray-600 flex items-center">
-        <svg
-          className="fill-current text-gray-500 w-3 h-3 mr-2"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-        >
-          <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
-        </svg>
-        Members only
-      </p>
-      <div className="text-gray-900 font-bold text-xl mb-2">
-        Can coffee make you a better developer?
+      <div>
+        {displayDetails()}
+
+
       </div>
-      <p className="text-gray-700 text-base">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
-        quia, nulla! Maiores et perferendis eaque, exercitationem praesentium
-        nihil.
-      </p>
-    </div>
-    <div className="flex items-center">
-      &lt; class="w-10 h-10 rounded-full mr-4" src="/img/jonathan.jpg"
-      alt="Avatar of Jonathan Reinink"&gt;
-      <div className="text-sm">
-        <p className="text-gray-900 leading-none">Jonathan Reinink</p>
-        <p className="text-gray-600">Aug 18</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-    </div>
-
+    </>
   )
 }
 

@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const signupValidationSchema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
@@ -14,6 +15,8 @@ const signupValidationSchema = Yup.object().shape({
 
 
 const Signup = () => {
+
+  const router = useRouter();
 
   const signupForm = useFormik({
     initialValues: {
@@ -38,6 +41,7 @@ const Signup = () => {
           console.log(response.status);
           if (response.status === 200) {
             toast.success('User registered successfully');
+            router.push("/login")
           } else {
             toast.error('Somthing went wrong');
           }
@@ -56,7 +60,7 @@ const Signup = () => {
         <div className="p-4 sm:p-7">
           <div className="text-center">
             <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">
-              Sign up
+              Influencer Sign up
             </h1>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
               Already have an account?

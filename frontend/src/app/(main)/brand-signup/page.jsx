@@ -44,6 +44,7 @@ const Signup = () => {
           console.log(response.status);
           if (response.status === 200) {
             toast.success("User Added Successfully")
+            router.push('/brand-login')
           } else {
             toast.error("Somthing went wrong")
           }

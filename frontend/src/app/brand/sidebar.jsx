@@ -15,7 +15,7 @@ const Sidebar = () => {
           href="index.html"
           className="text-white text-3xl font-semibold uppercase hover:text-gray-300"
         >
-          {currentBrand.name}
+          {/* {currentBrand.name} */}
         </a>
         <Link href='/brand/new-campaign' className="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
           <i className="fas fa-plus mr-3" /> New Campaign
