@@ -53,7 +53,7 @@ const FindCampaign = () => {
                                 />
                                 <div>
                                     <h5 className="text-sm text-gray-800 dark:text-gray-200">
-                                        Brand Name
+                                        {campaign.brand.name}
                                     </h5>
                                 </div>
                             </div>
