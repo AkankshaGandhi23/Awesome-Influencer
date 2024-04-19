@@ -23,47 +23,43 @@ const Sidebar = () => {
       </div>
       <nav className="text-white text-base font-semibold pt-3">
         <a
-          href="index.html"
+          href="/brand/dashboard"
           className="flex items-center active-nav-link text-white py-4 pl-6 nav-item"
         >
           <i className="fas fa-tachometer-alt mr-3" />
           Dashboard
         </a>
         <a
-          href="blank.html"
+          href="/brand/manageuser"
           className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
         >
           <i className="fas fa-sticky-note mr-3" />
-          Blank Page
+          Manage User
         </a>
         <a
-          href="tables.html"
+          href="/brand/new-campaign"
           className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
         >
           <i className="fas fa-table mr-3" />
-          Tables
+          New Campaign
         </a>
         <a
-          href="forms.html"
+          href="/brand/profile"
           className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
         >
           <i className="fas fa-align-left mr-3" />
-          Forms
+          Profile
         </a>
+
         <a
-          href="tabs.html"
+          href="/"
           className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
         >
-          <i className="fas fa-tablet-alt mr-3" />
-          Tabbed Content
+          <i className="fas fa-align-left mr-3" />
+          Home
         </a>
-        <a
-          href="calendar.html"
-          className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
-        >
-          <i className="fas fa-calendar mr-3" />
-          Calendar
-        </a>
+        
+        
       </nav>
       <button
         onClick={brandLogout}

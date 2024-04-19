@@ -37,6 +37,17 @@ router.get('/getbyid/:id', (req, res) => {
         });
 });
 
+router.get('/getbybrand', verifyToken, (req, res) => {
+    console.log(req.user);
+    Model.find({brand : req.user._id})
+        .then((result) => {
+            res.status(200).json(result);
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
 router.put('/update/:id', (req, res) => {
     Model.findByIdAndUpdate(req.params.id, req.body, {new : true}).populate('brand')
         .then((result) => {

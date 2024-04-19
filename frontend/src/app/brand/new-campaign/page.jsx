@@ -17,7 +17,7 @@ const NewCampaign = () => {
             description: '',
             incentive: 0,
             lastDate: '',
-            // brand: ,
+            followers: '',
             createdAt: new Date()
         },
         onSubmit: (values, {resetForm}) => {
@@ -64,6 +64,7 @@ const NewCampaign = () => {
 
 
     return (
+        
         <div className="w-full h-screen overflow-x-hidden border-t flex flex-col">
             <main className="w-full flex-grow p-6">
                 <h1 className="w-full text-3xl text-black pb-6">New Campaign</h1>
@@ -173,9 +174,9 @@ const NewCampaign = () => {
                                     </label>
                                     <input
                                         className="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                                        id="title"
+                                        id="followers"
                                         onChange={campaignForm.handleChange}
-                                        value={campaignForm.values.title}
+                                        value={campaignForm.values.followers}
                                         type="text"
                                         required=""
                                         placeholder="Followers count"

@@ -7,6 +7,7 @@ import Navbar from './navbar';
 const Layout = ({ children }) => {
     return (
         <div className='bg-gray-100 font-family-karla flex'>
+            {/* <Navbar/> */}
             <Sidebar />
             {children}
         </div>

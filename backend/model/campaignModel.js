@@ -7,6 +7,7 @@ const mySchema = new Schema({
     description : String,
     incentive : Number,
     lastDate : Date,
+    followers: Number,
     brand: {type: Schema.Types.ObjectId, ref: 'brands'},
     createdAt : Date
 });

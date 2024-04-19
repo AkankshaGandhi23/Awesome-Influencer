@@ -116,23 +116,40 @@ const Navbar = () => {
             >
               Home
             </Link>
+            
             <a
               className="font-semibold text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500"
-              href="#"
+              href="/find-campaign"
             >
-              Account
+              Find Campaign
             </a>
+
             <a
               className="font-semibold text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500"
-              href="/view-campaign/id"
+              href="user/manage-enrollment"
             >
-              Work
+              Enroll
             </a>
+            
             <a
               className="font-semibold text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500"
               href="/about"
             >
               About
+            </a>
+
+            <a
+              className="font-semibold text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500"
+              href="/brand/dashboard"
+            >
+              Brand Dashboard
+            </a>
+
+            <a
+              className="font-semibold text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500"
+              href="/contact"
+            >
+              Contact Us
             </a>
             {showloginOptions()}
           </div>

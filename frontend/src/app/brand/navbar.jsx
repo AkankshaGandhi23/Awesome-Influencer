@@ -28,21 +28,21 @@ const Navbar = () => {
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
           >
             <i className="fas fa-sticky-note mr-3" />
-            Blank Page
+            Manage User
           </a>
           <a
             href="tables.html"
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
           >
             <i className="fas fa-table mr-3" />
-            Tables
+            New Campaign
           </a>
           <a
             href="forms.html"
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
           >
             <i className="fas fa-align-left mr-3" />
-            Forms
+            Profile
           </a>
           <a
             href="tabs.html"
