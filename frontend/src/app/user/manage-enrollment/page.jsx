@@ -61,7 +61,7 @@ const ManageEnrollment = () => {
             <div className='p-10'>
                 {displayEnrollment()}
                 {
-                    selEnrollment!==null && <ManageProof campaignId={selEnrollment.campaign._id} />
+                    selEnrollment!==null && <ManageProof enrollmentData={selEnrollment} />
                 }
             </div>
         </div>

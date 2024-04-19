@@ -1,6 +1,6 @@
 'use client';
 import useAppContext from '@/context/AppContext';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 
@@ -9,6 +9,8 @@ const ViewCampaign = () => {
   const { id } = useParams();
   const [campaignDetails, setCampaignDetails] = useState(null);
   const { currentUser } = useAppContext();
+
+  const router = useRouter()
 
   const fetchCampaign = async () => {
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/campaign/getbyid/${id}`)
@@ -67,6 +69,7 @@ const ViewCampaign = () => {
           enroll();
         } else {
           toast.error('You are already enrolled in this campaign');
+          router.push('/user/manage-enrollment');
         }
       })
       .catch((err) => {
@@ -82,6 +85,7 @@ const ViewCampaign = () => {
         className="absolute inset-0 object-cover w-full h-full"
         alt=""
       />
+
       <div className="relative bg-opacity-90 bg-blue-700 h-screen">
         <svg
           className="absolute inset-x-0 bottom-0 text-white"
@@ -122,12 +126,12 @@ const ViewCampaign = () => {
             </div> */}
             <div className="mt-5 w-full xl:px-8">
               <div className="bg-white rounded shadow-2xl p-7 sm:p-10">
-                <h3 className='text-3xl'>{campaignDetails.title}</h3>
+                <h3 className='text-3xl font-bold text-black'>{campaignDetails.title}</h3>
                 <div className='flex p-16'>
                   <div>
                     <img
                       className="max-w-sm h-60"
-                      src="https://i.pinimg.com/originals/25/6c/19/256c19006b945701f7e2d080fde7b12d.jpg"
+                      src={`${process.env.NEXT_PUBLIC_API_URL}/${campaignDetails.cover}`}
                     />
                   </div>
                   <div className="max-w-sm w-full lg:max-w-full lg:flex">
@@ -135,35 +139,28 @@ const ViewCampaign = () => {
                     <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                       <div className="mb-8">
                         <p className="text-sm text-gray-600 flex items-center">
-                          <svg
-                            className="fill-current text-gray-500 w-3 h-3 mr-2"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                          >
-                            <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
-                          </svg>
-                          Nike
+
+                          {campaignDetails.brand.name}
                         </p>
                         <p>
-                          Product:shoes
+                          {campaignDetails.type}
                         </p>
                         <div className="text-gray-900 font-bold text-xl mb-2">
-                          "Step Up Your Game:Nike Shoes - Where Innovation Meets Style"
+                          {campaignDetails.title}
                         </div>
                         <p className="text-gray-700 text-base">
-                          Nike Shoes: Cutting-edge design,premium materials,<br></br>
-                          and superior performance for athletes and fashion enthusiasts alike.
+                          {campaignDetails.description}
                         </p>
                       </div>
                       <div className="flex items-center">
                         <img
                           className="w-10 h-10 rounded-full mr-4"
-                          src="https://i.pinimg.com/originals/25/6c/19/256c19006b945701f7e2d080fde7b12d.jpg"
+                          src={`${process.env.NEXT_PUBLIC_API_URL}/${campaignDetails.cover}`}
                           alt="Avatar of Jonathan Reinink"
                         />
                         <div className="text-sm">
-                          <p className="text-gray-900 leading-none font-bold text-lg">Incentive:₹5000</p>
-                          <p className="text-gray-600 font-bold text-lg">Last Date: 20 April 2024 </p>
+                          <p className="text-gray-900 leading-none font-bold text-lg">Incentive:₹{campaignDetails.incentive}</p>
+                          <p className="text-gray-600 font-bold text-lg">Last Date: {new Date(campaignDetails.lastDate).toLocaleDateString()}</p>
                         </div>
                       </div>
                     </div>
