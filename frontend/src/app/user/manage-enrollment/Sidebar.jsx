@@ -19,9 +19,10 @@ const Sidebar = ({ items, setSelEnrollment, selEnrollment }) => {
         >
           {currentUser.name}
         </a>
-        <Link href='/brand/new-campaign' className="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+        {items.length < 1 && <h4 className='text-center my-10 text-slate-900 font-bold'>No Campaigns</h4>}
+        {/* <Link href='/brand/new-campaign' className="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
           <i className="fas fa-plus mr-3" /> New Campaign
-        </Link>
+        </Link> */}
       </div>
       <nav className="text-white text-base font-semibold pt-3">
         {
