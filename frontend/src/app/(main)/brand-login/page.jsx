@@ -46,9 +46,12 @@ const Login = () => {
                 setBrandLoggedIn(true);
                 router.push('/brand/dashboard');
               })
+          }else{
+            toast.error('Invalid Credentials');
           }
         }).catch((err) => {
           console.log(err);
+          toast.error('Invalid Credentials');
         })
     }
   })
