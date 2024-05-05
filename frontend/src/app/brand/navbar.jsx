@@ -23,13 +23,7 @@ const Navbar = () => {
             <i className="fas fa-tachometer-alt mr-3" />
             Dashboard
           </a>
-          <a
-            href="blank.html"
-            className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
-          >
-            <i className="fas fa-sticky-note mr-3" />
-            Manage User
-          </a>
+          
           <a
             href="tables.html"
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"

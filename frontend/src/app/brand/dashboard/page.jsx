@@ -4,7 +4,7 @@ import { Dialog } from '@headlessui/react';
 import React, { useEffect, useState } from 'react'
 import ViewCampaign from './ViewCampaign';
 
-const AdminDashboard = () => {
+const BrandDashboard = () => {
 
   const { currentBrand } = useBrandContext();
   const [campaignList, setCampaignList] = useState([]);
@@ -135,4 +135,4 @@ const AdminDashboard = () => {
   )
 }
 
-export default AdminDashboard;
+export default BrandDashboard;
